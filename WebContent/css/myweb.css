@@ -1,0 +1,65 @@
+@CHARSET "UTF-8";
+.navbar-default .navbar-nav > li > a{
+	font-family: fantasy;
+	font-size: 20px
+}
+.navbar-default .navbar-nav > li > a{
+	color:maroon;
+}
+.navbar-default .navbar-nav > li > a:focus ,navbar-default .navbar-nav > li > a:hover{
+	color:maroon;
+}
+.navbar-nav > li > a{
+	padding-top: 20px;
+}
+h1.title{
+	font-family: fantasy;
+	font-size: 50px;
+}
+.navbar-default{
+	border: none;
+}
+.thumbnail{
+	border: none;
+}
+.padding.content{
+	padding: 20px 0;
+}
+h2.headingL{
+	font-family: cursive;
+	color: maroon;
+}
+.bdheading{
+	background: gray;
+	height: 20px;
+	margin: 20px 0;
+}
+.bdheading span {
+	font-family: inherit;
+	color: maroon;
+	background: white;
+	font-size: 30px;
+}
+footer{
+	background: maroon;
+	padding: 150px 20px;
+}
+footer h4{
+	font-family: fantasy;
+	font-size: 30px;
+	color: white;
+}
+footer p{
+	font-family: fantasy;
+	font-size: 20px;
+	color: white;
+}
+footer ul{
+	margin:0;
+	padding: 0 ;
+	list-style: none;
+}
+footer ul li{
+	float: left;
+	margin-right: 10px;	
+}
