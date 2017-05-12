@@ -17,21 +17,19 @@ import model.Category;
 /**
  * Servlet implementation class CategoryController
  */
-@WebServlet({ "/CategoryController", "/manageCategory" })
-public class CategoryController extends HttpServlet {
+@WebServlet({ "/CreateCategoryController","/EditCategoryController"})
+public class CreateEditCategoryController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CategoryDAO dao;
 
 	public static final String INDEX = "/Category/ManageCategory.jsp";
 	public static final String CREATE = "/Category/create.jsp";
 	public static final String EDIT = "/Category/edit.jsp";
-	public static final String DETAIL = "/Category/detail.jsp";
-	public static final String PRINT = "/Category/print.jsp";
-
+	
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public CategoryController() {
+	public CreateEditCategoryController() {
 		super();
 		dao = new CategoryDAO();
 		// TODO Auto-generated constructor stub
@@ -63,14 +61,6 @@ public class CategoryController extends HttpServlet {
 				int categoryId = Integer.parseInt(request.getParameter("categoryId"));
 				Category category = dao.getCategoryById(categoryId);
 				request.setAttribute("category", category);
-			} else if (action.equalsIgnoreCase("detail")) {
-				forward = DETAIL;
-				int categoryId = Integer.parseInt(request.getParameter("categoryId"));
-				Category category = dao.getCategoryById(categoryId);
-				request.setAttribute("category", category);
-			} else if (action.equalsIgnoreCase("print")) {
-				forward = PRINT;
-				request.setAttribute("listCategory", dao.getAllCategories());
 			} else {
 				forward = INDEX;
 				request.setAttribute("listCategory", dao.getAllCategories());
@@ -99,12 +89,7 @@ public class CategoryController extends HttpServlet {
 		boolean err = false;
 		String action = request.getParameter("hidAction");
 		System.out.println("hidAction = " + action);
-		if (action.equalsIgnoreCase("search")) {
-			String cond = request.getParameter("txtSearch");
-			request.setAttribute("listCategory", dao.getCategoryByCond(cond));
-			forward = INDEX;
-		} else {
-			String id = request.getParameter("txtId");
+		String id = request.getParameter("txtId");
 			Pattern paternObjectS = Pattern.compile("\\d*");
 			Matcher matcherObjectS = paternObjectS.matcher(id);
 			if (!matcherObjectS.matches()) {
@@ -159,10 +144,9 @@ public class CategoryController extends HttpServlet {
 					dao.update(category);
 				}
 				forward = INDEX;	
-			}
-		}
+			}	
 		request.setAttribute("listCategory", dao.getAllCategories());
 		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);
 	}
-}
+	}

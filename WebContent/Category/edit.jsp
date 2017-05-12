@@ -16,7 +16,7 @@
 <link href="<c:url value='/css/app.css' />" rel="stylesheet"></link>
 </head>
 <body>
-<form action="<%=request.getContextPath()%>/CategoryController"
+<form action="<%=request.getContextPath()%>/EditCategoryController"
 		method="post" class="form-horizontal">
 		<input type="hidden" name="hidAction" value="edit">
 		<input type="hidden" name="hidId" value="<c:out value="${category.id}" />">
@@ -61,7 +61,7 @@
 			</div>
 
 			<input type="submit" value="Cập nhật" class="btn btn-primary btn-sm" />
-			or <a href="<c:url value='/CategoryController?action=index' />">Quay lại</a>
+			or <a href="<c:url value='/EditCategoryController?action=index' />">Quay lại</a>
 	</form>
     
 </body>
