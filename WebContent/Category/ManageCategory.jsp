@@ -43,7 +43,7 @@
 </head>
 <body>
 	
-	<form action="<%=request.getContextPath()%>/CategoryController"
+	<form action="<%=request.getContextPath()%>/LoadDataSearchCategoryController"
 		method="post" class="form-horizontal">
 		<input type="hidden" name="hidAction" value="search">
 		<div class="generic-container">
@@ -64,7 +64,7 @@
 								<a href="CategoryController?action=create"
 								class="btn btn-primary btn-sm"><span
 									class="glyphicon glyphicon-plus "></span> Thêm</a> <a
-								target="_blank" href="CategoryController?action=print"
+								target="_blank" href="<%=request.getContextPath()%>/LoadDataSearchCategoryController?action=print"
 								class="btn btn-primary btn-sm"><span
 									class="glyphicon glyphicon-print "></span> In ấn</a>
 								
