@@ -21,7 +21,7 @@ import model.Category;
 public class CategoryController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CategoryDAO dao;
-//change thao nguyen
+
 	public static final String INDEX = "/Category/ManageCategory.jsp";
 	public static final String CREATE = "/Category/create.jsp";
 	public static final String EDIT = "/Category/edit.jsp";
