@@ -9,7 +9,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Quản lý loại sản phẩm</title>
 <link href="<c:url value='/css/bootstrap.css' />" rel="stylesheet"></link>
-<link href="<c:url value='/css/app.css' />" rel="stylesheet"></link>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -43,7 +42,7 @@
 </head>
 <body>
 	
-	<form action="<%=request.getContextPath()%>/LoadDataCategoryController"
+	<form action="<%=request.getContextPath()%>/Category/Search"
 		method="post" class="form-horizontal">
 		<input type="hidden" name="hidAction" value="search">
 		<div class="generic-container">
@@ -61,10 +60,10 @@
 									<span class="glyphicon glyphicon-search"></span>&nbsp; Tìm
 								</button>
 								
-								<a href="CreateCategoryController?action=create"
+								<a href="<%=request.getContextPath()%>/Category/create?action=create"
 								class="btn btn-primary btn-sm"><span
 									class="glyphicon glyphicon-plus "></span> Thêm</a> <a
-								target="_blank" href="PrintCategoryController?action=print"
+								target="_blank" href="<%=request.getContextPath()%>/Category/Print?action=print"
 								class="btn btn-primary btn-sm"><span
 									class="glyphicon glyphicon-print "></span> In ấn</a>
 								
@@ -95,14 +94,14 @@
 											<td width="38%"><c:out value="${cate.name}" /></td>
 											<td width="28%"><c:out value="${cate.link}" /></td>
 											<td width="10%"><a class="btn btn-primary btn-sm"
-												href="../<%=request.getContextPath()%>/DetailCategoryController?action=detail&categoryId=<c:out value="${cate.id}"/>"><span
+												href="<%=request.getContextPath()%>/Category/Detail?action=detail&categoryId=<c:out value="${cate.id}"/>"><span
 													class="glyphicon glyphicon-info-sign"></span> Chi tiết</a></td>
 											<td width="10%"><a class="btn btn-primary btn-sm"
-												href="<%=request.getContextPath()%>/EditCategoryController?action=edit&categoryId=<c:out value="${cate.id}"/>"><span
+												href="<%=request.getContextPath()%>/Category/edit?action=edit&categoryId=<c:out value="${cate.id}"/>"><span
 													class="glyphicon glyphicon-pencil"></span> Sửa</a></td>
 											<td width="8%">
 											<a class="btn btn-danger"
-										href="<%=request.getContextPath()%>/DeleteCategoryController?action=delete&categoryId=<c:out value="${cate.id}"/>">Xóa</a></td>
+										href="<%=request.getContextPath()%>/Category/Delete?action=delete&categoryId=<c:out value="${cate.id}"/>">Xóa</a></td>
 										</tr>
 									</c:forEach>
 								</c:when>

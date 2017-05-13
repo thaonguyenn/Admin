@@ -50,7 +50,7 @@
 		</div>
 	</div>
 
-	<a href="<c:url value='/DetailCategoryController?action=index' />">Quay
+	<a href="<c:url value='<%=request.getContextPath()%>/Category/Detail?action=index' />">Quay
 		lại</a>
 </body>
 </html>

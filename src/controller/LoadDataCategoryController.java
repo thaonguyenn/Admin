@@ -15,7 +15,7 @@ import model.Category;
 /**
  * Servlet implementation class CategoryController
  */
-@WebServlet({ "/LoadDataCategoryController","/SearchCategoryController","/PrintCategoryController","/DetailCategoryController", "/manageCategory" })
+@WebServlet({ "/Category/LoadData","/Category/Search","/Category/Print","/Category/Detail", "/manageCategory" })
 public class LoadDataCategoryController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CategoryDAO dao;
@@ -85,7 +85,6 @@ public class LoadDataCategoryController extends HttpServlet {
 			request.setAttribute("listCategory", dao.getCategoryByCond(cond));
 			forward = INDEX;
 		}
-		request.setAttribute("listCategory", dao.getAllCategories());
 		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);
 	}

@@ -17,7 +17,7 @@ import model.Category;
 /**
  * Servlet implementation class CategoryController
  */
-@WebServlet({ "/CreateCategoryController","/EditCategoryController"})
+@WebServlet({ "/Category/create","/Category/edit"})
 public class CreateEditCategoryController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CategoryDAO dao;
@@ -48,13 +48,7 @@ public class CreateEditCategoryController extends HttpServlet {
 		if (request.getParameter("action") != null) {
 			String action = request.getParameter("action");
 			String forward = "";
-			if (action.equalsIgnoreCase("delete")) {
-				forward = INDEX;
-				int categoryId = Integer.parseInt(request.getParameter("categoryId"));
-				dao.delete(categoryId);
-				request.setAttribute("listCategory", dao.getAllCategories());
-
-			} else if (action.equalsIgnoreCase("create")) {
+			if (action.equalsIgnoreCase("create")) {
 				forward = CREATE;
 			} else if (action.equalsIgnoreCase("edit")) {
 				forward = EDIT;
@@ -84,20 +78,21 @@ public class CreateEditCategoryController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		String forward = "";
-
+		//gop bien lai, validate trung id o database
 		String errorId="", errorIdM="", errorIdS="", errorName="", errorLink = "";
 		boolean err = false;
 		String action = request.getParameter("hidAction");
 		System.out.println("hidAction = " + action);
+		if(action.equalsIgnoreCase("add")){
 		String id = request.getParameter("txtId");
 			Pattern paternObjectS = Pattern.compile("\\d*");
-			Matcher matcherObjectS = paternObjectS.matcher(id);
+			Matcher matcherObjectS = paternObjectS.matcher(id);//check logic
 			if (!matcherObjectS.matches()) {
 				errorIdM = "Mã loại sản phẩm phải là số ";
 				request.setAttribute("errorIdM", errorIdM);
 				err = true;
 			}
-			for (Category cate : dao.getAllCategories()) {
+			for (Category cate : dao.getAllCategories()) {//check logic
 				if ((cate.getId() + "").equals(request.getParameter("txtId"))) {
 					errorIdS = "Mã loại sản phẩm đã tồn tại, vui lòng đổi mã khác!";
 					request.setAttribute("errorIdS", errorIdS);
@@ -120,10 +115,29 @@ public class CreateEditCategoryController extends HttpServlet {
 				request.setAttribute("errorLink", errorLink);
 				err = true;
 			}
-			if (err == true && action.equalsIgnoreCase("add")) {
+			if (err == true) {
 				forward = CREATE;
 			} 
-			else if (err == true && action.equalsIgnoreCase("edit")) {
+			else if (err == false) {
+				Category category = new Category();
+				category.setId(Integer.parseInt(request.getParameter("txtId")));
+				category.setName(request.getParameter("txtName"));
+				category.setLink(request.getParameter("txtLink"));
+				dao.add(category);
+				forward = INDEX;
+			} }
+		else if(action.equalsIgnoreCase("edit")){
+			if (request.getParameter("txtName") == null || request.getParameter("txtName").equals("")) {
+				errorName = "Không được để trống tên loại sản phẩm";
+				request.setAttribute("errorName", errorName);
+				err = true;
+			}
+			if (request.getParameter("txtLink") == null || request.getParameter("txtLink").equals("")) {
+				errorLink = "Không được để trống link đến loại sản phẩm";
+				request.setAttribute("errorLink", errorLink);
+				err = true;
+			}
+			if (err == true) {
 				Category category = new Category();
 				category.setId(Integer.parseInt(request.getParameter("txtId")));
 				category.setName(request.getParameter("txtName"));
@@ -136,17 +150,13 @@ public class CreateEditCategoryController extends HttpServlet {
 				category.setId(Integer.parseInt(request.getParameter("txtId")));
 				category.setName(request.getParameter("txtName"));
 				category.setLink(request.getParameter("txtLink"));
-
-				if (action.equalsIgnoreCase("add")) {
-					dao.add(category);
-				} else if (action.equalsIgnoreCase("edit")) {
-					category.setId(Integer.parseInt(request.getParameter("hidId")));
-					dao.update(category);
-				}
+				category.setId(Integer.parseInt(request.getParameter("hidId")));
+				dao.update(category);
 				forward = INDEX;	
-			}	
+		}	
+		}	
 		request.setAttribute("listCategory", dao.getAllCategories());
 		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);
-	}
-	}
+	
+	}}

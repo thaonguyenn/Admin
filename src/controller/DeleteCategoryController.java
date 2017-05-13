@@ -14,7 +14,7 @@ import dao.CategoryDAO;
 /**
  * Servlet implementation class CategoryController
  */
-@WebServlet({ "/DeleteCategoryController" })
+@WebServlet({ "/Category/Delete" })
 public class DeleteCategoryController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CategoryDAO dao;
