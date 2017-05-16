@@ -30,7 +30,7 @@
 					</ul></li>
 				<li><a href="<%=request.getContextPath()%>/showUser.jsp">Quản lý khách hàng</a></li>
 				<li><a href="#">Quản lý bán hàng</a></li>
-				<li><a href="#">Thống kê</a></li>
+				<li><a href="<%=request.getContextPath()%>/showPercent.jsp">Thống kê</a></li>
 
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
