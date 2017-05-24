@@ -2,9 +2,15 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.Bill;
+import model.BillDetail;
+import model.Category;
 import model.DatabaseConnection;
 
 public class BillDAO {
@@ -31,5 +37,48 @@ public class BillDAO {
 			e.printStackTrace();
 		}
 	}
-
+	public List<Bill> getAllBills(){
+		List<Bill> bills = new ArrayList<Bill>();
+		try{
+			Statement statement = conn.createStatement();
+			ResultSet resultSet = statement.executeQuery("select * from bill");
+			while(resultSet.next()){
+				Bill bill = new Bill();
+				bill.setBillId(resultSet.getString("billId"));
+				bill.setUserName(resultSet.getString("userName"));
+				bill.setTotalBill(resultSet.getDouble("totalBill"));
+				bill.setAddress(resultSet.getString("address"));
+				bill.setPayment(resultSet.getString("payment"));
+				bill.setDateTime(resultSet.getTimestamp("dateTime"));
+				
+				bills.add(bill);
+			}
+			resultSet.close();
+			statement.close();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return bills;
+	}
+	public Bill getBillById(String id){
+		Bill bill = new Bill();
+		try{
+			String query = "select * from bill where billId like N'"+id+"'";
+			Statement statement = conn.createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
+			while(resultSet.next()){
+				bill.setBillId(resultSet.getString("billId"));
+				bill.setUserName(resultSet.getString("userName"));
+				bill.setTotalBill(resultSet.getDouble("totalBill"));
+				bill.setAddress(resultSet.getString("address"));
+				bill.setPayment(resultSet.getString("payment"));
+				bill.setDateTime(resultSet.getTimestamp("dateTime"));
+			}
+			resultSet.close();
+			statement.close();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return bill;
+	}
 }

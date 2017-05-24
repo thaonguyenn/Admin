@@ -30,8 +30,15 @@
 					</ul></li>
 				<li><a href="<%=request.getContextPath()%>/showUser.jsp">Quản lý khách hàng</a></li>
 				<li><a href="#">Quản lý bán hàng</a></li>
-				<li><a href="<%=request.getContextPath()%>/showPercent.jsp">Thống kê</a></li>
-
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+								data-toggle="dropdown" role="button" aria-haspopup="true"
+								aria-expanded="false">Thống kê <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="<%=request.getContextPath()%>/showPercent.jsp">Biểu đồ doanh số</a></li>
+									<li><a href="<%=request.getContextPath()%>/showBill.jsp">Thống kê hóa đơn</a></li>
+									<li><a href="<%=request.getContextPath()%>/Chart/StatisticWareHouse.jsp">Thống kê kho hàng</a></li>
+								</ul></li>
+				
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#">Sign up</a></li>

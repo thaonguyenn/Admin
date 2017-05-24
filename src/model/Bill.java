@@ -8,6 +8,7 @@ private double totalBill;
 private String address;
 private String payment;
 private Timestamp dateTime;
+public Bill(){}
 public Bill(String billId, String userName, double totalBill, String address, String payment, Timestamp dateTime) {
 	super();
 	this.billId = billId;
