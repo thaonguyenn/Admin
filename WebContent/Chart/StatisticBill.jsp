@@ -11,6 +11,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Statistic Bill</title>
+<link href='<%=request.getContextPath()%>/image/favicon.ico' rel='shortcut icon' type='image/vnd.microsoft.icon'/>
 <link href="<c:url value='/css/bootstrap.css' />" rel="stylesheet"></link>
 <link href="<c:url value='/css/app.css' />" rel="stylesheet"></link>
 <link rel="stylesheet"
@@ -30,10 +31,45 @@
 <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<jsp:include page="../menu.jsp" />
-	<!-- menu -->
-	<!-- end of menu -->
-	<!-- contend of  page -->
+	<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-header">
+				<li><a href="#" ; style="font-size: 20px">Nhom011-2017</a></li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false">Quản lý sản phẩm <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="<%=request.getContextPath()%>/showProduct.jsp">Sản
+								phẩm</a></li>
+						<li><a href="<%=request.getContextPath()%>/showCategory.jsp">Loại
+								sản phẩm</a></li>
+					</ul></li>
+				<li><a href="<%=request.getContextPath()%>/showUser.jsp">Quản lý khách hàng</a></li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+								data-toggle="dropdown" role="button" aria-haspopup="true"
+								aria-expanded="false">Thống kê <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="<%=request.getContextPath()%>/showPercent.jsp">Thống kê tỷ trọng sản phẩm đã bán</a></li>
+									<li><a href="<%=request.getContextPath()%>/showBill.jsp">Thống kê hóa đơn</a></li>
+									<li><a href="<%=request.getContextPath()%>/Chart/StatisticWareHouse.jsp">Thống kê kho hàng</a></li>
+								</ul></li>
+				
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="http://2017-nhom011.azurewebsites.net/">Website</a></li>
+			</ul>
+		</div>
+		<!-- /.navbar-collapse -->
+	</div>
+	<!-- /.container-fluid --> </nav>
+	
+	
+	
+	
 
 	<form action="<%=request.getContextPath()%>/StatisticBill" method="post">
 		<input type="hidden" name="hidAction1" value="search1">
@@ -71,6 +107,7 @@
 						<tbody>
 							<%
 								int i = 1;
+								double sum =0;
 							%>
 							<c:choose>
 								<c:when test="${fn:length(unchecked) > 0}">
@@ -80,12 +117,14 @@
 											<td width="10%"><c:out value="${bill.billId}" /></td>
 											<td width="10%"><c:out value="${bill.userName}" /></td>
 											<%
-											List<Bill> checked = (List<Bill>)request.getAttribute("checked");
+											List<Bill> unchecked = (List<Bill>)request.getAttribute("unchecked");
 											NumberFormat nf = NumberFormat.getInstance();
 											nf.setMaximumFractionDigits(2);
-											String totalBillFormat = nf.format(checked.get(i-2).getTotalBill());
+											String totalBillFormat = nf.format(unchecked.get(i-2).getTotalBill());
+											if(unchecked.size()>1)
+											sum+=unchecked.get(i-2).getTotalBill();
 											%>
-											<td width="10%"><c:out value="<%=totalBillFormat%>" /></td>
+											<td width="10%">$ <c:out value="<%=totalBillFormat%>"/></td>
 											<td width="15%"><c:out value="${bill.address}" /></td>
 											<td width="15%"><c:out value="${bill.payment}" /></td>
 											<td width="15%"><c:out value="${bill.dateTime}" /></td>
@@ -105,8 +144,14 @@
 							</c:choose>
 						</tbody>
 					</table>
-
-
+<%
+NumberFormat f = NumberFormat.getInstance();
+f.setMaximumFractionDigits(2);
+String total = f.format(sum); 
+if(sum>0){
+%>
+<h4 style="text-align: right;">Tổng doanh thu hiện tại: <b>$ <%=total%></b></h4>
+<%} %>
 				</div>
 
 				<!-- end of content -->
@@ -148,7 +193,7 @@
 						<tbody>
 							<%
 								int j = 1;
-							
+								double sum2 =0;
 							%>
 							<c:choose>
 								<c:when test="${fn:length(checked) > 0}">
@@ -162,6 +207,8 @@
 											NumberFormat nf = NumberFormat.getInstance();
 											nf.setMaximumFractionDigits(2);
 											String totalBillFormat = nf.format(checked.get(j-2).getTotalBill());
+											if(checked.size()>1)
+											sum2+=checked.get(j-2).getTotalBill();
 											%>
 											<td width="10%"><c:out value="<%=totalBillFormat%>" /></td>
 											<td width="15%"><c:out value="${billc.address}" /></td>
@@ -180,8 +227,14 @@
 							</c:choose>
 						</tbody>
 					</table>
-
-
+<%
+NumberFormat f2 = NumberFormat.getInstance();
+f2.setMaximumFractionDigits(2);
+String total2 = f2.format(sum2);
+if(sum2>0){
+%>
+<h4 style="text-align: right;">Tổng doanh thu hiện tại: <b>$ <%=total2%></b></h4>
+<%} %>
 				</div>
 
 				<!-- end of content -->

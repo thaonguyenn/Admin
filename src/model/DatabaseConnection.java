@@ -15,6 +15,8 @@ public class DatabaseConnection {
 				+ "database=nhom011-2017;user=nhom011-2017@nhom011-2017;password=1683nnNN;"
 				+ "encrypt=true;trustServerCertificate=false;"
 				+ "hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
+//		String url = "jdbc:sqlserver://localhost:1433;"
+//				+ "database=Coffee;user=sa;password=123456;";
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			conn = DriverManager.getConnection(url);

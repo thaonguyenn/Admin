@@ -62,12 +62,14 @@ public class StatisticBill extends HttpServlet {
 		if (uncheckDAO.getAllBills().size() > 0)
 			for (UncheckedBill ubill : uncheckDAO.getAllBills()) {
 				int tmp = 0;
+				if(unchecked.size()>0){
 				for (Bill bill : unchecked) {
+					if(bill.getBillId()!=null)
 					if (bill.getBillId().equals(ubill.getBillId())) {
 						tmp += 1;
 						break;
 					}
-				}
+				}}
 				if (tmp > 0)
 					continue;
 				unchecked.add(billDAO.getBillById(ubill.getBillId()));
@@ -75,12 +77,13 @@ public class StatisticBill extends HttpServlet {
 		if (checkDAO.getAllBills().size() > 0)
 			for (CheckedBill cbill : checkDAO.getAllBills()) {
 				int tmp = 0;
+				if(checked.size()>0){
 				for (Bill bill : checked) {
 					if (bill.getBillId().equals(cbill.getBillId())) {
 						tmp += 1;
 						break;
 					}
-				}
+				}}
 				if (tmp > 0)
 					continue;
 				checked.add(billDAO.getBillById(cbill.getBillId()));

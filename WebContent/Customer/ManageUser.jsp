@@ -8,6 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Quản lý sản phẩm</title>
+<link href='<%=request.getContextPath()%>/image/favicon.ico' rel='shortcut icon' type='image/vnd.microsoft.icon'/>
 <link href="<c:url value='/css/bootstrap.css' />" rel="stylesheet"></link>
 <link href="<c:url value='/css/app.css' />" rel="stylesheet"></link>
 <link rel="stylesheet"
@@ -56,7 +57,6 @@
 							<tr>
 								<th title="Số thứ tự">STT</th>
 								<th title="Tên tài khoản">Tên tài khoản</th>
-								<th title="Mật khẩu tài khoản">Mật khẩu tài khoản</th>
 								<th title="Họ">Họ</th>
 								<th title="Tên">Tên</th>
 								<th title="Email">Email</th>
@@ -73,7 +73,6 @@
 										<tr>
 											<td width="5%" style="align: center"><%=i++%></td>
 											<td width="10%"><c:out value="${cus.userName}" /></td>
-											<td width="28%"><c:out value="${cus.password}" /></td>
 											<td width="30%"><c:out value="${cus.firstName}"/></td>
 											<td width="10%"><c:out value="${cus.lastName}"/></td>
 											<td width="10%"><c:out value="${cus.email}"/></td>

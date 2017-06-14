@@ -73,7 +73,7 @@ public ProductDAO() {
 		List<Product> products = new ArrayList<Product>();
 		try{
 			Statement statement = conn.createStatement();
-			ResultSet resultSet = statement.executeQuery("select * from product2");
+			ResultSet resultSet = statement.executeQuery("select * from dbo.product2");
 			while(resultSet.next()){
 				Product product = new Product();
 				product.setId(resultSet.getInt("id"));
@@ -97,7 +97,7 @@ public ProductDAO() {
 	public Product getProductById(int id){
 		Product product = new Product();
 		try{
-			String query = "select * from product2 where id =?";
+			String query = "select * from dbo.product2 where id =?";
 			PreparedStatement preparedStatement = conn.prepareStatement(query);
 			preparedStatement.setInt(1, id);
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -122,7 +122,7 @@ public ProductDAO() {
 		List<Product> products = new ArrayList<Product>();
 		try{
 			Statement statement = conn.createStatement();
-			ResultSet resultSet = statement.executeQuery("select * from product2 where id like N'%"+cond+"%' or name like N'%"+cond+"%'");
+			ResultSet resultSet = statement.executeQuery("select * from dbo.product2 where id like N'%"+cond+"%' or name like N'%"+cond+"%'");
 			while(resultSet.next()){
 				Product product = new Product();
 				product.setId(resultSet.getInt("id"));

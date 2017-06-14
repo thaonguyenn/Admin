@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Export</title>
+<link href='<%=request.getContextPath()%>/image/favicon.ico' rel='shortcut icon' type='image/vnd.microsoft.icon'/>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -77,6 +78,7 @@
 </script>
 </head>
 <body>
+
 	<h1>In danh sách sản phẩm</h1>
 	<table id="example" class="display nowrap" cellspacing="0" width="100%">
 		<thead>

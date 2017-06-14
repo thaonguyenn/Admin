@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Menu</title>
+<link href='<%=request.getContextPath()%>/image/favicon.ico' rel='shortcut icon' type='image/vnd.microsoft.icon'/>
 <link rel="stylesheet" media="screen" href="./css/bootstrap.min.css">
 <script src="./js/jquery-3.1.1.min.js"></script>
 <script src="./js/bootstrap.min.js"></script>
@@ -18,7 +19,6 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-header">
 				<li><a href="#" ; style="font-size: 20px">Nhom011-2017</a></li>
-				<li><a href="#">Trang chủ</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Quản lý sản phẩm <span class="caret"></span></a>
@@ -29,20 +29,17 @@
 								sản phẩm</a></li>
 					</ul></li>
 				<li><a href="<%=request.getContextPath()%>/showUser.jsp">Quản lý khách hàng</a></li>
-				<li><a href="#">Quản lý bán hàng</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 								data-toggle="dropdown" role="button" aria-haspopup="true"
 								aria-expanded="false">Thống kê <span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="<%=request.getContextPath()%>/showPercent.jsp">Biểu đồ doanh số</a></li>
+									<li><a href="<%=request.getContextPath()%>/showPercent.jsp">Thống kê tỷ trọng sản phẩm đã bán</a></li>
 									<li><a href="<%=request.getContextPath()%>/showBill.jsp">Thống kê hóa đơn</a></li>
 									<li><a href="<%=request.getContextPath()%>/Chart/StatisticWareHouse.jsp">Thống kê kho hàng</a></li>
 								</ul></li>
 				
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Sign up</a></li>
-				<li><a href="#">Login</a></li>
 				<li><a href="http://2017-nhom011.azurewebsites.net/">Website</a></li>
 			</ul>
 		</div>

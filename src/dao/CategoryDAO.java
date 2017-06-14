@@ -76,7 +76,7 @@ public class CategoryDAO implements ObjectDAO{
 	public Category getCategoryById(int id){
 		Category category = new Category();
 		try{
-			String query = "select * from category2 where id =?";
+			String query = "select * from dbo.category2 where id =?";
 			PreparedStatement preparedStatement = conn.prepareStatement(query);
 			preparedStatement.setInt(1, id);
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -96,7 +96,7 @@ public class CategoryDAO implements ObjectDAO{
 		List<Category> categories = new ArrayList<Category>();
 		try{
 			Statement statement = conn.createStatement();
-			ResultSet resultSet = statement.executeQuery("select * from category2 where id like N'%"+cond+"%' or name like N'%"+cond+"%'");
+			ResultSet resultSet = statement.executeQuery("select * from dbo.category2 where id like N'%"+cond+"%' or name like N'%"+cond+"%'");
 			while(resultSet.next()){
 				Category category = new Category();
 				category.setId(resultSet.getInt("id"));

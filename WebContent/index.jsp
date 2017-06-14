@@ -8,6 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Quản lý sản phẩm</title>
+<link href='<%=request.getContextPath()%>/image/favicon.ico' rel='shortcut icon' type='image/vnd.microsoft.icon'/>
 <link href="<c:url value='/css/bootstrap.css' />" rel="stylesheet"></link>
 <link href="<c:url value='/css/app.css' />" rel="stylesheet"></link>
 <link rel="stylesheet"
@@ -22,7 +23,7 @@
 </head>
 </head>
 <body>
-	<jsp:include page="menu.jsp" />
+	<jsp:include page="/menu.jsp" />
 	<!-- menu -->
 	<!-- end of menu -->
 	<!-- contend of  page -->
